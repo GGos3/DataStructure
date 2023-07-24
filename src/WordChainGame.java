@@ -6,6 +6,7 @@ public class WordChainGame {
     private static final List<Player> players = new ArrayList<>();
     private static final List<Word> wordList = new ArrayList<>();
     private static final Scanner sc = new Scanner(System.in);
+    private static int wordCount = 0;
 
     public static void main(String[] args) {
         run();
@@ -31,17 +32,16 @@ public class WordChainGame {
     }
 
     public static void run() {
-        int count = 0;
         setPlayer();
 
         System.out.println("시작하는 단어는 아버지입니다.");
-        wordList.add(new Word(count, "아버지", players.get(0)));
-        count++;
+        wordList.add(new Word(wordCount, "아버지", players.get(0)));
+        wordCount++;
 
         while (true) {
-            System.out.printf("%s >> ", players.get(count % players.size()).name());
+            System.out.printf("%s >> ", players.get(wordCount % players.size()).name());
             String word = sc.next();
-            Word newWord = new Word(count, word, players.get(count % players.size()));
+            Word newWord = new Word(wordCount, word, players.get(wordCount % players.size()));
 
             if (validateWord(newWord) != 0) {
                 System.out.printf("%s 님이 졌습니다.", newWord.player().name());
@@ -49,7 +49,7 @@ public class WordChainGame {
             }
 
             wordList.add(newWord);
-            count++;
+            wordCount++;
         }
     }
 
