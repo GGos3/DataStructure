@@ -52,7 +52,7 @@ public class Product {
             case 1 -> Book.constructor(product);
             case 2 -> CompactDisc.constructor(product);
             case 3 -> ConversationBook.constructor(Book.constructor(product));
-            default -> throw new IllegalStateException("Unexpected value: " + i);
+            default -> product;
         };
     }
 
