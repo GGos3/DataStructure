@@ -18,7 +18,7 @@ public class AlphaHistogram {
         try {
             while (true) {
                 countAlphaMatch(userInput());
-                printAlpha();
+                printHistogram();
             }
         } catch (NoSuchElementException e) {
             System.err.println("EOF 문자가 감지되어 프로그램을 종료합니다.");
@@ -46,7 +46,7 @@ public class AlphaHistogram {
         );
     }
 
-    void printAlpha() {
+    void printHistogram() {
         countMap.forEach((alpha, count) -> {
             System.out.printf("%c", (char) alpha.intValue());
             IntStream.range(0, count).forEach(it -> System.out.print("-"));
