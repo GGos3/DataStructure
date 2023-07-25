@@ -14,18 +14,6 @@ public class AlphaHistogram {
         app.run();
     }
 
-    void run() {
-        try {
-            while (true) {
-                countAlphaMatch(userInput());
-                printHistogram();
-            }
-        } catch (NoSuchElementException e) {
-            System.err.println("EOF 문자가 감지되어 프로그램을 종료합니다.");
-            System.out.println("Good Bye!!");
-        }
-    }
-
     String userInput() {
         System.out.println("문장을 입력해주세요.");
         return sc.nextLine();
@@ -39,11 +27,7 @@ public class AlphaHistogram {
 
     void countAlphaMatch(String userInput) {
         IntStream.range(97, 122).forEach(alpha ->
-            countMap.put(
-                    alpha,
-                    matchCount(userInput, alpha)
-            )
-        );
+                countMap.put(alpha, matchCount(userInput, alpha)));
     }
 
     void printHistogram() {
@@ -52,5 +36,17 @@ public class AlphaHistogram {
             IntStream.range(0, count).forEach(it -> System.out.print("-"));
             System.out.println();
         });
+    }
+
+    void run() {
+        try {
+            while (true) {
+                countAlphaMatch(userInput());
+                printHistogram();
+            }
+        } catch (NoSuchElementException e) {
+            System.err.println("EOF 문자가 감지되어 프로그램을 종료합니다.");
+            System.out.println("Good Bye!!");
+        }
     }
 }
