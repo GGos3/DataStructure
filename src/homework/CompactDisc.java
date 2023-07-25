@@ -33,7 +33,7 @@ public class CompactDisc extends Product {
 
     void print() {
         super.print();
-        System.out.print("엘범 제목 >> " + this.albumName);
-        System.out.print("가수 >> " + this.singer);
+        System.out.println("엘범 제목 >> " + this.albumName);
+        System.out.println("가수 >> " + this.singer);
     }
 }
